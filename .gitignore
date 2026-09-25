@@ -1,0 +1,27 @@
+### Build output ###
+target/
+/${project.build.directory}/
+*.class
+
+### Node / frontend ###
+node_modules/
+dist/
+dist-ssr/
+
+### IDE ###
+.idea/
+*.iml
+.vscode/
+
+### Secrets and keys (never commit) ###
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*

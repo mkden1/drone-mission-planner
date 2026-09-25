@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 320px;
+  background: #16213e;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar h1 {
+  font-size: 1.2rem;
+  color: #e94560;
+  border-bottom: 1px solid #e9456033;
+  padding-bottom: 8px;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #0f3460;
+  border: 1px solid #e9456033;
+  border-radius: 4px;
+  padding: 8px;
+  color: #eee;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+button {
+  background: #e94560;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+button:hover {
+  background: #c73652;
+}
+
+button.secondary {
+  background: #0f3460;
+}
+
+button.secondary:hover {
+  background: #1a4a80;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.mission-card {
+  background: #0f3460;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.mission-card:hover,
+.mission-card.active {
+  border-color: #e94560;
+}
+
+.mission-card h3 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.mission-card p {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.mission-card .status {
+  font-size: 0.75rem;
+  color: #e94560;
+  margin-top: 4px;
+}
+
+.waypoint-hint {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-align: center;
+  padding: 8px;
+  border: 1px dashed #e9456033;
+  border-radius: 4px;
+}
+
+.waypoint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.waypoint-item {
+  font-size: 0.78rem;
+  color: #aaa;
+  background: #1a1a2e;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.waypoint-item:hover {
+  border-color: #e9456055;
+}
+
+.waypoint-item.selected {
+  border-color: #e94560;
+  color: #eee;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
