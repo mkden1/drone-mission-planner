@@ -6,12 +6,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env (see .env.example)}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env (see .env.example)}
     ports:
-      - "5432:5432"
-
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
+      - "127.0.0.1:5432:5432"
 
   mission-service:
     build: ./mission-service
@@ -28,8 +23,6 @@ services:
     build: ./telemetry-service
     ports:
       - "8082:8082"
-    depends_on:
-      - redis
 
   gateway:
     build: ./gateway-service
