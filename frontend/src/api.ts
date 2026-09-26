@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { Mission } from './types';
+import type { Mission, Waypoint } from './types';
+import type { MissionStats } from './utils/missionStats';
 
 const API_BASE = 'http://localhost:8081';
 

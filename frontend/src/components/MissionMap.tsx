@@ -1,8 +1,8 @@
 import { useRef, useEffect, useCallback } from 'react';
 import { Viewer } from 'resium';
 import * as Cesium from 'cesium';
-import { Mission, Waypoint } from '../types';
-import { DronePosition } from '../hooks/useTelemetry';
+import type { Mission, Waypoint } from '../types';
+import type { DronePosition } from '../hooks/useTelemetry';
 
 Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_TOKEN;
 
@@ -27,7 +27,6 @@ function waypointsToCartesian(waypoints: Waypoint[]): Cesium.Cartesian3[] {
 
 export default function MissionMap({
   onWaypointAdd,
-  missions,
   selectedMission,
   dronePosition,
   isFlying,
@@ -166,9 +165,6 @@ export default function MissionMap({
           // Apply pitch to forward direction
           const cosPitch = Math.cos(pitchRad);
           const sinPitch = Math.sin(pitchRad);
-
-          // Right vector in ENU
-          const rightENU = new Cesium.Cartesian3(cosH, -sinH, 0);
 
           // Pitched forward = forward*cos(pitch) + up*sin(pitch)
           const pitchedForwardENU = new Cesium.Cartesian3(
@@ -324,8 +320,8 @@ export default function MissionMap({
     const viewer = node.cesiumElement;
     cesiumViewerRef.current = viewer;
 
-    viewer.selectionIndicator.viewModel.selectionIndicatorElement.style.visibility = 'hidden';
-    viewer.infoBox.container.style.visibility = 'hidden';
+    (viewer.selectionIndicator.viewModel.selectionIndicatorElement as HTMLElement).style.visibility = 'hidden';
+    (viewer.infoBox.container as HTMLElement).style.visibility = 'hidden';
 
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(-0.1, 51.5, 50000),
@@ -359,7 +355,7 @@ export default function MissionMap({
       }
     }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
 
-    clickHandlerRef.current.setInputAction((event: Cesium.ScreenSpaceEventHandler.MoveEvent) => {
+    clickHandlerRef.current.setInputAction((event: Cesium.ScreenSpaceEventHandler.MotionEvent) => {
       if (!mouseDownRef.current) return;
 
       const index = draggingIndexRef.current;

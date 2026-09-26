@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Mission, Waypoint } from '../types';
+import type { Mission, Waypoint } from '../types';
 import { getMissionStats } from '../api';
-import { MissionStats } from '../utils/missionStats';
+import type { MissionStats } from '../utils/missionStats';
 import { debounce } from '../utils/debounce';
 
 interface Props {
@@ -22,7 +22,7 @@ export default function MissionStatsPanel({
   onWaypointSelect
 }: Props) {
   const [stats, setStats] = useState<MissionStats | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [localWaypoints, setLocalWaypoints] = useState<Waypoint[]>([]);
   const isFirstOpen = useRef(true);
 

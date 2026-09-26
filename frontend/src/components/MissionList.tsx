@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mission } from '../types';
+import type { Mission } from '../types';
 
 interface Props {
   missions: Mission[];

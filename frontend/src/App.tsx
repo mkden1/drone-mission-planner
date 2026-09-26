@@ -3,7 +3,7 @@ import MissionMap from './components/MissionMap';
 import CreateMissionForm from './components/CreateMissionForm';
 import MissionList from './components/MissionList';
 import WaypointEditor from './components/WaypointEditor';
-import { Mission, Waypoint } from './types';
+import type { Mission, Waypoint } from './types';
 import { getMissions, updateWaypoints, deleteMission } from './api';
 import { useTelemetry } from './hooks/useTelemetry';
 import MissionStatsPanel from './components/MissionStatsPanel';
@@ -44,18 +44,13 @@ export default function App() {
   };
 
 const handleWaypointAdd = async (waypoint: Waypoint) => {
-  if (!selectedMission) {
-    console.log('No selected mission');
-    return;
-  }
-  console.log('Adding waypoint to mission', selectedMission.id, waypoint);
+  if (!selectedMission) return;
   try {
     const updatedWaypoints = [
       ...(selectedMission.waypoints || []),
       { ...waypoint, sequenceOrder: (selectedMission.waypoints?.length || 0) + 1 }
     ];
     const updated = await updateWaypoints(selectedMission.id!, updatedWaypoints);
-    console.log('Updated mission', updated);
     setSelectedMission(updated);
     setMissions(prev => prev.map(m => m.id === updated.id ? updated : m));
   } catch (err) {

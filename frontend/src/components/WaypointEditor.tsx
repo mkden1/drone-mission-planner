@@ -1,4 +1,4 @@
-import { Waypoint, Mission } from '../types';
+import type { Mission } from '../types';
 
 interface Props {
   mission: Mission;
